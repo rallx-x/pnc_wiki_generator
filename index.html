@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>뉴럴 클라우드 인형 위키 HTML 생성기</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <h1>뉴럴 클라우드 인형 위키 HTML 생성기</h1>
+        <p>정보를 입력하면 티스토리용 위키 HTML을 생성합니다.</p>
+      </div>
+
+      <button type="button" class="header-button" id="resetButton">
+        초기화
+      </button>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-panel">
+        <div class="panel-header">
+          <h2>입력</h2>
+          <span>Phase 1</span>
+        </div>
+
+        <div class="form-group">
+          <label for="dollName">이름</label>
+          <input id="dollName" type="text" placeholder="예: 노아" />
+        </div>
+
+        <div class="form-group">
+          <label for="dollJob">직업</label>
+          <input id="dollJob" type="text" placeholder="예: 카지노 딜러" />
+        </div>
+
+        <div class="form-group">
+          <label for="dollModel">모델</label>
+          <input id="dollModel" type="text" placeholder="예: ANTE" />
+        </div>
+
+        <div class="form-group">
+          <label for="dollBirthday">생일</label>
+          <input id="dollBirthday" type="text" placeholder="예: 6월 15일" />
+        </div>
+
+        <div class="form-group">
+          <label for="dollQuote">인용문</label>
+          <textarea id="dollQuote" rows="4" placeholder="여러 줄 입력 가능"></textarea>
+        </div>
+      </section>
+
+      <section class="preview-panel">
+        <div class="panel-header">
+          <h2>미리보기</h2>
+          <span>Preview</span>
+        </div>
+
+        <article class="wiki-preview" id="preview">
+          <div class="profile-card">
+            <div class="profile-title">
+              <span>피험 인형 프로필</span>
+              <strong>PROJECT.NEURAL.CLOUD</strong>
+            </div>
+
+            <table>
+              <tbody>
+                <tr>
+                  <th>이름</th>
+                  <td id="previewName">-</td>
+                </tr>
+                <tr>
+                  <th>직업</th>
+                  <td id="previewJob">-</td>
+                </tr>
+                <tr>
+                  <th>모델</th>
+                  <td id="previewModel">-</td>
+                </tr>
+                <tr>
+                  <th>생일</th>
+                  <td id="previewBirthday">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <section class="wiki-section">
+            <h2>1. 개요</h2>
+            <blockquote id="previewQuote">“”</blockquote>
+            <p>
+              모바일 게임 <span class="pnc-color">뉴럴 클라우드</span>에 등장하는 인형.
+            </p>
+          </section>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
