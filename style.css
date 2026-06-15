@@ -142,6 +142,23 @@ body {
   font-size: 14px;
 }
 
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+
+.checkbox-grid label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.checkbox-grid input {
+  width: auto;
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
