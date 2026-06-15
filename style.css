@@ -13,6 +13,11 @@
   --sub-text: #666666;
   --accent: #6b6ade;
   --pnc-orange: #ec9f19;
+  --wiki-card-bg: #ffffff;
+  --wiki-card-head: #f0f2f5;
+  --wiki-card-border: #505050;
+  --wiki-card-text: #222222;
+  --wiki-card-sub-text: #666666;
 }
 
 body {
@@ -142,6 +147,45 @@ body {
   font-size: 14px;
 }
 
+.form-group select {
+  width: 100%;
+  background: #ffffff;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.birthday-select-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.birthday-select-row select {
+  appearance: auto;
+}
+
+.birthday-select-row select:disabled {
+  background: #f0f2f5;
+  color: var(--sub-text);
+}
+
+.birthday-unknown {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.birthday-unknown input {
+  width: auto;
+}
+
 .checkbox-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -159,6 +203,55 @@ body {
   width: auto;
 }
 
+.section-toggle-grid label {
+  min-height: 40px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.section-toggle-grid input {
+  accent-color: var(--accent);
+}
+
+.section-toggle-grid label:has(input:checked) {
+  border-color: var(--accent);
+  background: #f0efff;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.section-toggle-grid label:has(input:disabled) {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.radio-grid label {
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.radio-grid input {
+  accent-color: var(--accent);
+}
+
+.radio-grid label:has(input:checked) {
+  border-color: var(--accent);
+  background: #f0efff;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.radio-grid label:hover {
+  border-color: var(--accent);
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 120px;
@@ -168,55 +261,241 @@ body {
   padding: 24px;
 }
 
-.profile-card {
+.top-profile-card {
   overflow: hidden;
-  border: 1px solid #505050;
-  border-radius: 4px;
-  margin-bottom: 28px;
-  background: #ffffff;
+  border: 1px solid var(--wiki-card-border);
+  margin-bottom: 24px;
+  background: var(--wiki-card-bg);
+  color: var(--wiki-card-text);
 }
 
-.profile-title {
-  padding: 16px;
-  background: #111111;
-  color: #ffffff;
+.top-profile-name {
+  padding: 14px 16px;
+  background: var(--wiki-card-head);
+  color: var(--wiki-card-text);
   text-align: center;
 }
 
-.profile-title span {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 4px;
-  color: #dddddd;
+.top-profile-name h2 {
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+
+.top-profile-name p {
+  color: var(--wiki-card-sub-text);
+  font-size: 14px;
+}
+
+.top-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+}
+
+.image-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  border-right: 1px solid var(--border);
+  background: #f7f8fa;
+  color: var(--sub-text);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.image-slot:nth-child(2) {
+  border-right: none;
+}
+
+.image-caption {
+  padding: 12px;
+  background: var(--wiki-card-head);
+  border-top: 1px solid var(--border);
+  color: var(--wiki-card-text);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.image-caption:nth-child(4) {
+  border-left: 1px solid var(--border);
+}
+
+.image-slot-wide {
+  grid-column: 1 / -1;
+  min-height: 340px;
+  border-top: 1px solid var(--border);
+  border-right: none;
+}
+
+.image-caption-wide {
+  grid-column: 1 / -1;
+}
+
+.wiki-toc {
+  width: fit-content;
+  min-width: 240px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.toc-toggle-button {
+  width: 100%;
+  border: none;
+  background: #f7f8fa;
+  color: var(--text);
+  padding: 14px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.toc-arrow {
+  color: var(--sub-text);
+  font-size: 14px;
+  transition: transform 0.15s ease;
+}
+
+.toc-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.toc-content {
+  padding: 14px 18px 16px;
+}
+
+.wiki-toc.is-collapsed .toc-content {
+  display: none;
+}
+
+.wiki-toc.is-collapsed .toc-arrow {
+  transform: rotate(-90deg);
+}
+
+.wiki-toc ol {
+  padding-left: 22px;
+}
+
+.wiki-toc li {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.wiki-toc a {
+  color: var(--pnc-orange);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.wiki-toc a:hover {
+  text-decoration: underline;
+}
+
+.profile-card {
+  overflow: hidden;
+  border: 1px solid var(--wiki-card-border);
+  border-radius: 0;
+  margin-bottom: 28px;
+  background: var(--wiki-card-bg);
+}
+
+.profile-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--wiki-card-head);
+  color: var(--wiki-card-text);
+}
+
+.profile-title span,
+.profile-title strong {
+  color: inherit;
 }
 
 .profile-title strong {
-  font-size: 18px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .profile-card table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .profile-card th,
 .profile-card td {
   padding: 12px 16px;
-  border-top: 1px solid #d8dde5;
+  border: 1px solid #d8dde5;
+  vertical-align: middle;
 }
 
 .profile-card th {
-  width: 140px;
-  background: #f0f2f5;
+  width: 90px;
+  background: #eceff3;
   text-align: left;
-  font-weight: 600;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.profile-card td {
+  background: #ffffff;
+  word-break: keep-all;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.profile-card .history-title {
+  padding: 12px 16px;
+  background: #eceff3;
+  text-align: left;
+  font-weight: 700;
+}
+
+#previewHistory {
+  padding: 16px;
+  background: #f7f8fa;
+  color: var(--text);
+  line-height: 1.8;
+  white-space: pre-line;
+  text-align: left;
+  vertical-align: top;
+}
+
+.wiki-section {
+  scroll-margin-top: 24px;
+  margin-bottom: 36px;
 }
 
 .wiki-section h2 {
+  position: relative;
   font-size: 28px;
   margin-bottom: 20px;
-  padding-bottom: 8px;
+  padding: 0 0 8px 28px;
   border-bottom: 1px solid #cccccc;
+  color: var(--text);
+}
+
+.wiki-section h2::before {
+  content: "▼";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--sub-text);
+  font-size: 16px;
+}
+
+.wiki-section h2 .section-number {
+  color: var(--pnc-orange);
 }
 
 .wiki-section blockquote {
