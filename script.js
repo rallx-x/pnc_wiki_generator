@@ -1,3 +1,4 @@
+const STORAGE_KEY = "pnc_wiki_generator_autosave";
 const fields = {
   name: document.getElementById("dollName"),
   job: document.getElementById("dollJob"),
@@ -21,6 +22,43 @@ function valueOrDash(value) {
   return trimmed ? trimmed : "-";
 }
 
+function getFormData() {
+  return {
+    name: fields.name.value,
+    job: fields.job.value,
+    model: fields.model.value,
+    birthday: fields.birthday.value,
+    quote: fields.quote.value,
+  };
+}
+
+function setFormData(data) {
+  fields.name.value = data.name || "";
+  fields.job.value = data.job || "";
+  fields.model.value = data.model || "";
+  fields.birthday.value = data.birthday || "";
+  fields.quote.value = data.quote || "";
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(getFormData())
+  );
+}
+
+function loadFromLocalStorage() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (!saved) return;
+
+  try {
+    setFormData(JSON.parse(saved));
+  } catch {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
 function renderPreview() {
   preview.name.textContent = valueOrDash(fields.name.value);
   preview.job.textContent = valueOrDash(fields.job.value);
@@ -32,7 +70,9 @@ function renderPreview() {
 }
 
 Object.values(fields).forEach((field) => {
-  field.addEventListener("input", renderPreview);
+  field.addEventListener("input", () => {
+  renderPreview();
+  saveToLocalStorage();
 });
 
 resetButton.addEventListener("click", () => {
@@ -40,7 +80,12 @@ resetButton.addEventListener("click", () => {
     field.value = "";
   });
 
+  localStorage.removeItem(STORAGE_KEY);
   renderPreview();
 });
 
+  renderPreview();
+});
+
+loadFromLocalStorage();
 renderPreview();
