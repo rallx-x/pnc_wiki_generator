@@ -71,8 +71,9 @@ function renderPreview() {
 
 Object.values(fields).forEach((field) => {
   field.addEventListener("input", () => {
-  renderPreview();
-  saveToLocalStorage();
+    renderPreview();
+    saveToLocalStorage();
+  });
 });
 
 resetButton.addEventListener("click", () => {
@@ -81,9 +82,6 @@ resetButton.addEventListener("click", () => {
   });
 
   localStorage.removeItem(STORAGE_KEY);
-  renderPreview();
-});
-
   renderPreview();
 });
 
