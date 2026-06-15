@@ -53,6 +53,21 @@ body {
   font-weight: 600;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-button {
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-button.danger {
+  background: #8b3a3a;
+}
+
 .workspace {
   display: grid;
   grid-template-columns: 420px 1fr;
