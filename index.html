@@ -15,10 +15,20 @@
         <p>정보를 입력하면 티스토리용 위키 HTML을 생성합니다.</p>
       </div>
 
-      <button type="button" class="header-button" id="resetButton">
-        초기화
-      </button>
-    </header>
+      <div class="header-actions">
+  <button type="button" class="header-button" id="saveJsonButton">
+    JSON 저장
+  </button>
+
+  <label class="header-button file-button" for="loadJsonInput">
+    JSON 불러오기
+  </label>
+  <input id="loadJsonInput" type="file" accept=".json" hidden />
+
+  <button type="button" class="header-button danger" id="resetButton">
+    초기화
+  </button>
+</div>
 
     <main class="workspace">
       <section class="editor-panel">
