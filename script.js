@@ -69,7 +69,17 @@ function downloadJson() {
     { type: "application/json" }
   );
 
-  function loadJsonFile(file) {
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "pnc_wiki_project.json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+function loadJsonFile(file) {
   if (!file) return;
 
   const reader = new FileReader();
@@ -88,16 +98,6 @@ function downloadJson() {
   };
 
   reader.readAsText(file);
-}
-
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "pnc_wiki_project.json";
-  a.click();
-
-  URL.revokeObjectURL(url);
 }
 
 function renderPreview() {
