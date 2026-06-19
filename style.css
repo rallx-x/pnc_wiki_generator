@@ -358,6 +358,9 @@ body {
 }
 
 .toc-arrow {
+  display: inline-block;
+  width: 16px;
+  text-align: center;
   color: var(--sub-text);
   font-size: 14px;
   transition: transform 0.15s ease;
@@ -376,8 +379,8 @@ body {
   display: none;
 }
 
-.wiki-toc.is-collapsed .toc-arrow {
-  transform: rotate(-90deg);
+.wiki-toc:not(.is-collapsed) .toc-arrow {
+  transform: rotate(90deg);
 }
 
 .wiki-toc ol {
@@ -405,6 +408,7 @@ body {
   border-radius: 0;
   margin-bottom: 28px;
   background: var(--wiki-card-bg);
+  padding-bottom: 16px;
 }
 
 .profile-title {
@@ -426,49 +430,51 @@ body {
   font-weight: 600;
 }
 
-.profile-card table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+  margin: 16px 16px 0;
 }
 
-.profile-card th,
-.profile-card td {
-  padding: 12px 16px;
-  border: 1px solid #d8dde5;
-  vertical-align: middle;
+.profile-item {
+  display: flex;
 }
 
-.profile-card th {
-  width: 90px;
+.profile-label {
+  width: 64px;
+  flex-shrink: 0;
+  padding: 10px 12px;
   background: #eceff3;
-  text-align: left;
+  color: var(--text);
   font-weight: 700;
   white-space: nowrap;
 }
 
-.profile-card td {
+.profile-value {
+  flex: 1;
+  padding: 10px 14px;
   background: #ffffff;
-  word-break: keep-all;
+  border: 1px solid #d8dde5;
+  border-left: none;
   line-height: 1.6;
-  font-weight: 500;
+  word-break: keep-all;
 }
 
-.profile-card .history-title {
-  padding: 12px 16px;
+.profile-history-label {
+  margin: 18px 16px 0;
+  padding: 10px 14px;
   background: #eceff3;
-  text-align: left;
   font-weight: 700;
 }
 
-#previewHistory {
+.profile-history-value {
+  margin: 0 16px;
   padding: 16px;
   background: #f7f8fa;
-  color: var(--text);
   line-height: 1.8;
   white-space: pre-line;
-  text-align: left;
-  vertical-align: top;
+  word-break: keep-all;
 }
 
 .wiki-section {
