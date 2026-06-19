@@ -236,7 +236,8 @@ function renderTocAndSectionNumbers() {
     const a = document.createElement("a");
 
     a.href = `#${section.id}`;
-    a.textContent = section.title;
+    a.textContent =
+  `${sectionNumber}. ${section.title}`;
 
     li.appendChild(a);
     tocList.appendChild(li);
