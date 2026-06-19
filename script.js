@@ -28,12 +28,11 @@ const preview = {
 const resetButton = document.getElementById("resetButton");
 const saveJsonButton = document.getElementById("saveJsonButton");
 const loadJsonInput = document.getElementById("loadJsonInput");
+
 const wikiToc = document.getElementById("wikiToc");
 const tocToggleButton = document.getElementById("tocToggleButton");
-const sectionToggles = document.querySelectorAll("[data-section]");
-const tocToggleButton = document.getElementById("tocToggleButton");
-const wikiToc = document.getElementById("wikiToc");
 const tocList = document.getElementById("tocList");
+const sectionToggles = document.querySelectorAll("[data-section]");
 
 const sectionMap = [
   { key: "overview", title: "개요", id: "overview", fixed: true },
