@@ -384,7 +384,8 @@ body {
 }
 
 .wiki-toc ol {
-  padding-left: 22px;
+  list-style: none;
+  padding-left: 0;
 }
 
 .wiki-toc li {
