@@ -347,24 +347,30 @@ body {
   width: fit-content;
   min-width: 240px;
   margin-bottom: 28px;
-  border: 1px solid var(--border);
   background: #ffffff;
 }
 
 .toc-toggle-button {
   width: 100%;
-  border: none;
+  min-height: 54px;
+  border: 1px solid var(--border);
   background: #f7f8fa;
   color: var(--text);
   padding: 14px 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   text-align: left;
   font-size: 18px;
   font-weight: 700;
-  justify-content: space-between;
+}
+
+.toc-content {
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 14px 18px 16px;
 }
 
 .toc-arrow {
