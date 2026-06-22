@@ -99,6 +99,40 @@ function syncBirthdayDisabledState() {
   }
 }
 
+function updateBirthdayDayOptions() {
+  const month = parseInt(fields.birthdayMonth.value, 10);
+
+  const daysByMonth = {
+    1: 31,
+    2: 29,
+    3: 31,
+    4: 30,
+    5: 31,
+    6: 30,
+    7: 31,
+    8: 31,
+    9: 30,
+    10: 31,
+    11: 30,
+    12: 31,
+  };
+
+  const maxDay = daysByMonth[month] || 31;
+
+  [...fields.birthdayDay.options].forEach((option) => {
+    if (!option.value) return;
+
+    const day = parseInt(option.value, 10);
+    option.hidden = day > maxDay;
+  });
+
+  const selectedDay = parseInt(fields.birthdayDay.value, 10);
+
+  if (selectedDay > maxDay) {
+    fields.birthdayDay.value = "";
+  }
+}
+
 function getFormData() {
   return {
     name: fields.name.value,
@@ -254,12 +288,21 @@ function renderTocAndSectionNumbers() {
   fields.name,
   fields.job,
   fields.model,
-  fields.birthdayMonth,
-  fields.birthdayDay,
   fields.history,
   fields.quote,
 ].forEach((field) => {
   field.addEventListener("input", () => {
+    renderPreview();
+    saveToLocalStorage();
+  });
+});
+
+[
+  fields.birthdayMonth,
+  fields.birthdayDay,
+].forEach((field) => {
+  field.addEventListener("change", () => {
+    updateBirthdayDayOptions();
     renderPreview();
     saveToLocalStorage();
   });
@@ -348,5 +391,6 @@ loadJsonInput.addEventListener("change", (event) => {
 });
 
 loadFromLocalStorage();
+updateBirthdayDayOptions();
 renderPreview();
 renderTocAndSectionNumbers();
