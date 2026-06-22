@@ -341,7 +341,7 @@ if (tocToggleButton && wikiToc) {
     );
 
     if (tocArrow) {
-      tocArrow.textContent = isCollapsed ? "▶" : "▼";
+      tocArrow.textContent = isCollapsed ? "▷" : "˅▽";
     }
   });
 }
