@@ -31,6 +31,9 @@ const loadJsonInput = document.getElementById("loadJsonInput");
 
 const wikiToc = document.getElementById("wikiToc");
 const tocToggleButton = document.getElementById("tocToggleButton");
+const tocArrow = tocToggleButton
+  ? tocToggleButton.querySelector(".toc-arrow")
+  : null;
 const tocList = document.getElementById("tocList");
 const sectionToggles = document.querySelectorAll("[data-section]");
 
@@ -282,15 +285,18 @@ fields.classType.forEach((radio) => {
   });
 });
 
-if (tocToggleButton) {
+if (tocToggleButton && wikiToc) {
   tocToggleButton.addEventListener("click", () => {
-    const isCollapsed =
-      wikiToc.classList.toggle("is-collapsed");
+    const isCollapsed = wikiToc.classList.toggle("is-collapsed");
 
     tocToggleButton.setAttribute(
       "aria-expanded",
       String(!isCollapsed)
     );
+
+    if (tocArrow) {
+      tocArrow.textContent = isCollapsed ? "▶" : "▼";
+    }
   });
 }
 
