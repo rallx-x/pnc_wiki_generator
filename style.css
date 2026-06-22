@@ -355,6 +355,7 @@ body {
   text-align: left;
   font-size: 18px;
   font-weight: 700;
+  justify-content: space-between;
 }
 
 .toc-arrow {
@@ -363,7 +364,6 @@ body {
   text-align: center;
   color: var(--sub-text);
   font-size: 14px;
-  transition: transform 0.15s ease;
 }
 
 .toc-title {
@@ -377,10 +377,6 @@ body {
 
 .wiki-toc.is-collapsed .toc-content {
   display: none;
-}
-
-.wiki-toc:not(.is-collapsed) .toc-arrow {
-  transform: rotate(90deg);
 }
 
 .wiki-toc ol {
