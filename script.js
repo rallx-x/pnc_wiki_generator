@@ -100,6 +100,7 @@ function syncBirthdayDisabledState() {
 }
 
 function updateBirthdayDayOptions() {
+  const currentDay = fields.birthdayDay.value;
   const month = parseInt(fields.birthdayMonth.value, 10);
 
   const daysByMonth = {
@@ -119,16 +120,18 @@ function updateBirthdayDayOptions() {
 
   const maxDay = daysByMonth[month] || 31;
 
-  [...fields.birthdayDay.options].forEach((option) => {
-    if (!option.value) return;
+  fields.birthdayDay.innerHTML = `<option value="">- 일</option>`;
 
-    const day = parseInt(option.value, 10);
-    option.hidden = day > maxDay;
-  });
+  for (let day = 1; day <= maxDay; day += 1) {
+    const option = document.createElement("option");
+    option.value = `${day}일`;
+    option.textContent = `${day}일`;
+    fields.birthdayDay.appendChild(option);
+  }
 
-  const selectedDay = parseInt(fields.birthdayDay.value, 10);
-
-  if (selectedDay > maxDay) {
+  if (parseInt(currentDay, 10) <= maxDay) {
+    fields.birthdayDay.value = currentDay;
+  } else {
     fields.birthdayDay.value = "";
   }
 }
@@ -297,15 +300,15 @@ function renderTocAndSectionNumbers() {
   });
 });
 
-[
-  fields.birthdayMonth,
-  fields.birthdayDay,
-].forEach((field) => {
-  field.addEventListener("change", () => {
-    updateBirthdayDayOptions();
-    renderPreview();
-    saveToLocalStorage();
-  });
+fields.birthdayMonth.addEventListener("change", () => {
+  updateBirthdayDayOptions();
+  renderPreview();
+  saveToLocalStorage();
+});
+
+fields.birthdayDay.addEventListener("change", () => {
+  renderPreview();
+  saveToLocalStorage();
 });
 
 fields.birthdayUnknown.addEventListener("change", () => {
