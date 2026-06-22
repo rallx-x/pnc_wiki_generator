@@ -374,9 +374,12 @@ body {
 }
 
 .toc-arrow {
-  display: inline-block;
-  width: 16px;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+  line-height: 1;
   color: var(--sub-text);
   font-size: 14px;
 }
@@ -504,7 +507,7 @@ body {
 }
 
 .wiki-section h2::before {
-  content: "▼";
+  content: "▽";
   position: absolute;
   left: 0;
   top: 2px;
